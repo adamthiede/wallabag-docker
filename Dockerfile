@@ -9,7 +9,7 @@ FROM golang:alpine AS builder
 # flag -ldflags "-s -w" produces a smaller executable
 RUN go install -ldflags "-s -w" -v github.com/a8m/envsubst/cmd/envsubst@v1.4.3
 
-FROM alpine:3.22
+FROM alpine:3.24
 
 COPY --from=builder /go/bin/envsubst /usr/bin/envsubst
 
@@ -21,43 +21,42 @@ RUN set -ex \
       libwebp \
       nginx \
       pcre \
-      php84 \
-      php84-bcmath \
-      php84-ctype \
-      php84-curl \
-      php84-dom \
-      php84-fpm \
-      php84-gd \
-      php84-gettext \
-      php84-iconv \
-      php84-json \
-      php84-mbstring \
-      php84-opcache \
-      php84-openssl \
-      php84-pecl-amqp \
-      php84-pecl-imagick \
-      php84-pdo_mysql \
-      php84-pdo_pgsql \
-      php84-pdo_sqlite \
-      php84-phar \
-      php84-session \
-      php84-simplexml \
-      php84-tokenizer \
-      php84-xml \
-      php84-zlib \
-      php84-sockets \
-      php84-xmlreader \
-      php84-tidy \
-      php84-intl \
-      php84-sodium \
+      php85 \
+      php85-bcmath \
+      php85-ctype \
+      php85-curl \
+      php85-dom \
+      php85-fpm \
+      php85-gd \
+      php85-gettext \
+      php85-iconv \
+      php85-json \
+      php85-mbstring \
+      php85-openssl \
+      php85-pecl-amqp \
+      php85-pecl-imagick \
+      php85-pdo_mysql \
+      php85-pdo_pgsql \
+      php85-pdo_sqlite \
+      php85-phar \
+      php85-session \
+      php85-simplexml \
+      php85-tokenizer \
+      php85-xml \
+      php85-zlib \
+      php85-sockets \
+      php85-xmlreader \
+      php85-tidy \
+      php85-intl \
+      php85-sodium \
       mariadb-client \
       postgresql17-client \
       rabbitmq-c \
       s6 \
       tar \
       tzdata \
- && ln -sf /usr/bin/php84 /usr/bin/php \
- && ln -sf /usr/sbin/php-fpm84 /usr/sbin/php-fpm \
+ && ln -sf /usr/bin/php85 /usr/bin/php \
+ && ln -sf /usr/sbin/php-fpm85 /usr/sbin/php-fpm \
  && rm -rf /var/cache/apk/* \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log
